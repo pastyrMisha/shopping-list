@@ -4,7 +4,7 @@ import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import PostStatusFilter from '../post-status-filter';
 import PostList from '../post-list';
-import PostAddForm from '../post-add-form';
+import PostAddForm from '../post-add-button';
 import './app.sass';
 
 export default class App extends Component {
@@ -21,7 +21,7 @@ export default class App extends Component {
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
-        this.onToogleImportant = this.onToogleImportant.bind(this);
+        this.onToogleListed = this.onToogleListed.bind(this);
         this.onToogleLiked = this.onToogleLiked.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
         this.onFilterSelect = this.onFilterSelect.bind(this);
@@ -30,7 +30,7 @@ export default class App extends Component {
 
 deleteItem(id) {
     this.setState(({data}) => {
-        const index = data.findIndex(elem => elem.id === id)
+        const index = data.findIndex(elem => elem.id === id);
         const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
         return {
             data: newArr 
@@ -38,32 +38,24 @@ deleteItem(id) {
     })
 }
 
-onToogleImportant(id) {
-    this.setState(({data}) => {
-        const index = data.findIndex(elem => elem.id === id);
+tooglePost(id, item) {
+    this.setState(({data})=>{
+        const index = data.findIndex(elem => elem.id ===id);
         const old = data[index];
-        const newItem = {...old, list: !old.list};
-        const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
+        const newItem = {...old, [item]: !old[item]};
+        const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)]
         return {
             data: newArr
         }
     })
 }
 
+onToogleListed(id){
+    this.tooglePost(id, 'list')
+}
+
 onToogleLiked(id) {
-    this.setState(({data}) => {
-        const index = data.findIndex(elem => elem.id === id);
-
-        const old = data[index];
-        const newItem = {...old, like: !old.like};
-        
-        const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
-
-        return {
-            data: newArr
-        }
-    })
+    this.tooglePost(id, 'like')
 }
 
 addItem(body) {
@@ -129,7 +121,7 @@ onFilterSelect(filter) {
             <PostList 
                 posts={visiblePosts} 
                 onDelete={this.deleteItem}
-                onToogleImportant={this.onToogleImportant}
+                onToogleListed={this.onToogleListed}
                 onToogleLiked={this.onToogleLiked}/>
             <PostAddForm
                 onAdd={this.addItem}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './post-add-form.sass';
+import './post-add-button.sass';
 
 export default class PostAddForm extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ render() {
             <button
                 type="submit"
                 className="btn btn-outline-secondary">
-                Добавить
+                Добавить товар
                 </button>
         </form>
     )
