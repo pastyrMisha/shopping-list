@@ -1,8 +1,8 @@
 import React from 'react';
 import './post-list-item.sass';
+import {UncontrolledTooltip } from 'reactstrap';
 
-
-const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, like}) => {
+const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, like, mame}) => {
     
             let classNames = 'app-list-item d-flex justify-content-between d-inline-block';
             if (list) classNames +=' list';
@@ -11,12 +11,19 @@ const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, lik
                 return (
                     <div className={classNames}>
                         <span
+                         id={mame}
                          className="app-list-item-label"
-                         data-toggle="tooltip" 
-                         title="Отметить"
                          onClick={onToogleLiked}>
-                            {label}
-                        </span>
+                        {label}
+                       </span>
+                       <UncontrolledTooltip 
+                                        placement="top"
+                                        target={mame}
+                                        trigger="hover"
+                                        autohide={true}
+                                        defaultOpen={false}>
+                             Отметить
+                        </UncontrolledTooltip>
                         <div className="d-flex justify-content-center align-items-center">
                             <button 
                             type="button"

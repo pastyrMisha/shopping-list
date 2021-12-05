@@ -39,7 +39,7 @@ render() {
             />
             <button
                 type="submit"
-                className="btn btn-outline-secondary">
+                className="btn btn-outline-danger">
                 Добавить товар
                 </button>
         </form>
