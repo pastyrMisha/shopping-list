@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './post-add-button.sass';
 
-export default class PostAddForm extends Component {
+export default class PostAddButton extends Component {
     constructor(props) {
         super(props);
         this.state = {

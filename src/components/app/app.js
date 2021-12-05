@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import AppHeader from '../app-header';
-import SearchPanel from '../search-panel';
-import PostStatusFilter from '../post-status-filter';
-import PostList from '../post-list';
-import PostAddForm from '../post-add-button';
+import AppHeader from '../app-header/app-header';
+import SearchPanel from '../search-panel/search-panel';
+import PostStatusFilter from '../post-status-filter/post-status-filter';
+import PostList from '../post-list/post-list';
+import PostAddForm from '../post-add-button/post-add-button';
 import './app.sass';
 
 export default class App extends Component {
