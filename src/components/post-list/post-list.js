@@ -11,7 +11,7 @@ const PostList = ({posts, onDelete, onToogleListed, onToogleLiked}) => {
             <li key={id} className='list-group-item'>
                   <PostListItem 
                   {...itemProps}
-                  id={id}
+                  id={"id" + id}
                   onDelete={() => onDelete(id)}
                   onToogleListed={() => onToogleListed(id)}
                   onToogleLiked={() => onToogleLiked(id)}/>
