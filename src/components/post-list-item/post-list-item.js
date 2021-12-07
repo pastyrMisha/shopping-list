@@ -3,11 +3,10 @@ import TooltipWrapper from '../tooltip-list/tooltip-list';
 import './post-list-item.sass';
 import { Tooltip } from 'reactstrap';
 
-const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, like, id}) => {
+const PostListItem = ({label, onDelete, onToogleListed, onToogleLiked, list, like, id}) => {
     const [tooltipOpen, setTooltipOpen] = React.useState(false);
     const toggle = () => setTooltipOpen(!tooltipOpen);
  
-    
  
             let classNames = 'app-list-item d-flex justify-content-between d-inline-block';
             if (list) classNames +=' list';
@@ -15,6 +14,8 @@ const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, lik
 
 
                 return (
+
+
                     <div className={classNames}>
                         <span
                          className="app-list-item-label"
@@ -29,8 +30,26 @@ const PostListItem = ({label, onDelete, onToogleLiked, onToogleListed, list, lik
                             Отметить
                         </Tooltip>
                        </span>
+
+
+
                         <div className="d-flex justify-content-center align-items-center">
-                        <TooltipWrapper/>
+                        <button 
+          type="button"
+          id={id}
+          className="btn-plus btn-sm"
+          onClick={onToogleListed}>
+              <i className="fa fa-plus"></i>
+                        </button> 
+                        <TooltipWrapper />
+                        {/* <TooltipWrapper 
+                                onClick={onToogleListed}
+                                iconType={"fa fa-plus"} 
+                                tooltipTitle={"Добавить в список"}/>
+                        <TooltipWrapper 
+                                onDelete={onDelete}
+                                iconType={"fa fa-trash"}  */}
+                                {/* tooltipTitle={"Удалить товар"}/> */}
 
                             {/* <button 
                             type="button"
