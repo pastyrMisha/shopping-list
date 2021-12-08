@@ -118,13 +118,14 @@ onFilterSelect(filter) {
                 filter={filter}
                 onFilterSelect={this.onFilterSelect}/>
             </div>
+            <PostAddForm
+                onAdd={this.addItem}/>
             <PostList 
                 posts={visiblePosts} 
                 onDelete={this.deleteItem}
                 onToogleListed={this.onToogleListed}
                 onToogleLiked={this.onToogleLiked}/>
-            <PostAddForm
-                onAdd={this.addItem}/>
+           
             </div>
         )
 }
