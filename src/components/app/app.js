@@ -4,7 +4,7 @@ import AppHeader from '../app-header/app-header';
 import SearchPanel from '../search-panel/search-panel';
 import PostStatusFilter from '../post-status-filter/post-status-filter';
 import PostList from '../post-list/post-list';
-import PostAddForm from '../post-add-button/post-add-button';
+import PostAddButton from '../post-add-button/post-add-button';
 import './app.sass';
 
 export default class App extends Component {
@@ -12,9 +12,9 @@ export default class App extends Component {
         super(props);
         this.state = {
             data : [
-                {label: 'Картофель', list: false, like: false, id: '1'},
-                {label: 'Морковь', list: false, like: false, id: '2'},
-                {label: 'Капуста', list: false, like: false, id: '3'}
+                // {label: 'Картофель', list: false, like: false, id: '1'},
+                // {label: 'Морковь', list: false, like: false, id: '2'},
+                // {label: 'Капуста', list: false, like: false, id: '3'}
              ],
              term : '',
              filter: 'all'
@@ -101,7 +101,6 @@ onFilterSelect(filter) {
     render() {
 
         const {data, term, filter} = this.state;
-
         const listed = data.filter(item => item.list).length;
         const allPosts = data.length;
         const visiblePosts = this.filterPost(this.searchPost(data, term), filter);
@@ -118,14 +117,13 @@ onFilterSelect(filter) {
                 filter={filter}
                 onFilterSelect={this.onFilterSelect}/>
             </div>
-            <PostAddForm
+            <PostAddButton
                 onAdd={this.addItem}/>
             <PostList 
                 posts={visiblePosts} 
                 onDelete={this.deleteItem}
                 onToogleListed={this.onToogleListed}
                 onToogleLiked={this.onToogleLiked}/>
-           
             </div>
         )
 }

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-
+import TooltipItem from '../tooltip-item/tooltip-item';
 import './post-add-button.sass';
 
 export default class PostAddButton extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -26,6 +27,7 @@ export default class PostAddButton extends Component {
     }
 
 render() {
+    
     return (
         <form 
             className="bottom-panel d-flex"
@@ -39,9 +41,14 @@ render() {
             />
             <button
                 type="submit"
+                id={"postButton"}
                 className="btn btn-outline-danger">
                 Добавить товар
                 </button>
+                <TooltipItem 
+                        id={"postButton"} 
+                        tooltipTitle={"Создать товар"} 
+                />
         </form>
     )
 }
